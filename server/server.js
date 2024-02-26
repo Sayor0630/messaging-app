@@ -13,9 +13,8 @@ const cloudinary = require('./middleware/cloudinary');
 const app = express();
 const server = http.createServer(app);
 
-// **Warning:** Allowing all origins is not recommended for production
-app.use(cors({ origin: '*' }));  // Allow all origins for development only
-
+// middleware
+app.use(cors(config.cors));
 app.use(express.json({ limit: '10mb' }));
 app.use(
   express.urlencoded({
@@ -37,6 +36,7 @@ if (!config.isDev) {
   app.get('*', (req, res) => res.sendFile(client));
 }
 
+// store socket on global object
 global.io = new SocketServer(server, { cors: config.cors });
 require('./socket');
 
