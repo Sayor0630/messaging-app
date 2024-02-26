@@ -3,7 +3,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   isDev,
   cors: {
-    origin: ['http://localhost:3001'],
+    origin: ['*'], // Allow requests from all origins
   },
   db: {
     uri: process.env.MONGO_URI,
