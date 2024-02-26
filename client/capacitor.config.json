@@ -1,7 +1,7 @@
 {
-  "appId": "com.example.app",
-  "appName": "lechat-client",
-  "webDir": "build",
+  "appId": "com.kotha.app",
+  "appName": "Kotha",
+  "webDir": "public",
   "server": {
     "androidScheme": "https"
   }

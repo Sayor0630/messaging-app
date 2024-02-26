@@ -50,7 +50,7 @@ function App() {
     const abortCtrl = new AbortController();
     // set default base url
     axios.defaults.baseURL = config.isDev
-      ? 'http://localhost:8080/api'
+      ? 'https://discord-file-uploader.onrender.com/api'
       : '/api';
     handleGetMaster(abortCtrl.signal);
 
