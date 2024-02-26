@@ -13,8 +13,9 @@ const cloudinary = require('./middleware/cloudinary');
 const app = express();
 const server = http.createServer(app);
 
-// middleware
-app.use(cors(config.cors));  // Use the configuration for CORS
+// **Warning:** Allowing all origins is not recommended for production
+app.use(cors({ origin: '*' }));  // Allow all origins for development only
+
 app.use(express.json({ limit: '10mb' }));
 app.use(
   express.urlencoded({
@@ -36,13 +37,6 @@ if (!config.isDev) {
   app.get('*', (req, res) => res.sendFile(client));
 }
 
-// Modify the CORS configuration to include both origins
-config.cors = {
-  origin: ['http://localhost', 'capacitor://localhost'],
-  // Other CORS options as needed
-};
-
-// store socket on global object
 global.io = new SocketServer(server, { cors: config.cors });
 require('./socket');
 
