@@ -14,11 +14,14 @@ const server = http.createServer(app);
 
 // Custom CORS middleware to handle CORS
 app.use((req, res, next) => {
+  const origin = req.headers.origin; // Get the Origin header from the request
+  console.log('Origin connected:', origin); // Log the origin
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allow specified methods
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specified headers
   next();
 });
+
 
 // Other middleware
 app.use(express.json({ limit: '10mb' }));
