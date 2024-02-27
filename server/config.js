@@ -4,6 +4,7 @@ module.exports = {
   isDev,
   cors: {
     origin: [
+      "http://localhost:3000",
       "https://localhost",
       "capacitor://localhost",
       "ionic://localhost",
