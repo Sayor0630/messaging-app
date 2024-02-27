@@ -31,19 +31,19 @@ exports.upload = async (req, res) => {
     if (isGroup) {
       await GroupModel.updateOne(
         { _id: targetId },
-        { $set: { avatar: upload.url } }
+        { $set: { avatar: upload.secure_url } }
       );
     } else {
       await ProfileModel.updateOne(
         { userId: targetId || req.user._id },
-        { $set: { avatar: upload.url } }
+        { $set: { avatar: upload.secure_url } }
       );
     }
 
     response({
       res,
       message: 'Avatar uploaded successfully',
-      payload: upload.url,
+      payload: upload.secure_url,
     });
   } catch (error0) {
     response({

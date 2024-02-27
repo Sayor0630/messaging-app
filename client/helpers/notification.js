@@ -8,17 +8,15 @@ export default async ({ title, body, icon }) => {
       throw errData;
     }
 
-    if (
-      document.visibilityState === 'hidden' &&
-      Notification.permission === 'granted'
-    ) {
+    if (Notification.permission === 'granted') {
+      // If permission is already granted, show the notification
       const notif = new Notification(title, { body, icon });
 
       notif.onerror = (error1) => {
         throw error1;
       };
-    } else {
-      // ask the user for permission
+    } else if (Notification.permission !== 'denied') {
+      // If permission is not denied, request permission
       await Notification.requestPermission();
     }
   } catch (error0) {

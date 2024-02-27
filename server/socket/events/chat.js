@@ -31,7 +31,7 @@ module.exports = (socket) => {
 
         file = await new FileModel({
           fileId,
-          url: upload.url,
+          url: upload.secure_url,
           originalname: args.file.originalname,
           type: upload.resource_type,
           format,
