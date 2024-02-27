@@ -1,28 +1,22 @@
 PODS:
   - Capacitor (5.7.0):
     - CapacitorCordova
-  - CapacitorCommunityHttp (1.4.1):
-    - Capacitor
   - CapacitorCordova (5.7.0)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
-  - "CapacitorCommunityHttp (from `../../node_modules/@capacitor-community/http`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
 
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
-  CapacitorCommunityHttp:
-    :path: "../../node_modules/@capacitor-community/http"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
 
 SPEC CHECKSUMS:
   Capacitor: fc155ee2ee45a2093d716f13cf5aa5a865e2d85a
-  CapacitorCommunityHttp: 7be90668527ef14ee10d08135b0e00fac9cf8247
   CapacitorCordova: e825fce1a2e14e4b5730641c7e098dccf74397b7
 
-PODFILE CHECKSUM: ee7f035db987bd233c7eeb6f238ca4268d8b599d
+PODFILE CHECKSUM: 8ab55909c5de2b217f9841e5e5b329f5ec901553
 
 COCOAPODS: 1.14.2

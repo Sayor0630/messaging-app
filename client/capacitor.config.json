@@ -4,7 +4,7 @@
   "webDir": "public",
   "bundledWebRuntime": false,
   "server": {
-    "url": "https://discord-file-uploader.onrender.com",
+    "url": "capacitor://localhost",
     "cleartext": true
   }
 }
