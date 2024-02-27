@@ -2,9 +2,7 @@
   "appId": "com.kotha.app",
   "appName": "Kotha",
   "webDir": "public",
-  "bundledWebRuntime": false,
   "server": {
-    "url": "capacitor://localhost",
-    "cleartext": true
+    "androidScheme": "https"
   }
 }
