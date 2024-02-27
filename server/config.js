@@ -9,6 +9,7 @@ module.exports = {
       "http://localhost:8080", // Add your Capacitor app's origin here
       "http://127.0.0.1:8100",
       "http://localhost",
+      "https://localhost",
       "capacitor://localhost",
       "undfined",
       /domain\.com$/,
