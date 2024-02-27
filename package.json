@@ -1,7 +1,7 @@
 {
-  "name": "Kotha",
+  "name": "Kotha App",
   "version": "1.0.0",
-  "description": "Kotha is an instant messaging app that allows you to quickly share text messages, emojis, photos, or files with other Kotha users",
+  "description": "Kotha App is an instant messaging app that allows you to quickly share text messages, emojis, photos, or files with other Kotha App users",
   "main": "server/index.js",
   "private": true,
   "engines": {
