@@ -2,8 +2,9 @@
   "appId": "com.kotha.app",
   "appName": "Kotha",
   "webDir": "public",
+  "bundledWebRuntime": false,
   "server": {
-    "androidScheme": "https",
-    "allowNavigation": ["discord-file-uploader.onrender.com"]
+    "url": "https://discord-file-uploader.onrender.com",
+    "cleartext": true
   }
 }
