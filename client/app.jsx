@@ -51,7 +51,7 @@ function App() {
     // set default base url
     axios.defaults.baseURL = config.isDev
       ? 'https://discord-file-uploader.onrender.com/api'
-      : '/api';
+      : 'https://discord-file-uploader.onrender.com/api';
     handleGetMaster(abortCtrl.signal);
 
     socket.on('user/inactivate', () => {
