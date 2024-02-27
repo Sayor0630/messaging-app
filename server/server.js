@@ -4,7 +4,6 @@ const express = require('express');
 const { Server: SocketServer } = require('socket.io');
 const http = require('http');
 const path = require('path');
-const cors = require('cors');
 const routes = require('./routes');
 const config = require('./config');
 const db = require('./db/connect');
@@ -13,8 +12,18 @@ const cloudinary = require('./middleware/cloudinary');
 const app = express();
 const server = http.createServer(app);
 
-// middleware
-app.use(cors(config.cors));
+// Custom CORS middleware to handle CORS
+app.use((req, res, next) => {
+  const origin = req.headers.origin; // Get the Origin header from the request
+  console.log('Origin connected:', origin); // Log the origin
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allow specified methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allow specified headers
+  next();
+});
+
+
+// Other middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(
   express.urlencoded({
@@ -36,7 +45,7 @@ if (!config.isDev) {
   app.get('*', (req, res) => res.sendFile(client));
 }
 
-// store socket on global object
+// Store socket on global object
 global.io = new SocketServer(server, { cors: config.cors });
 require('./socket');
 
