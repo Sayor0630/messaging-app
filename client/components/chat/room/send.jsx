@@ -38,28 +38,34 @@ function Send({ setChats, setNewMessage, control }) {
   };
 
   const handleSubmit = () => {
-    if (form.text.length > 0 || form.file) {
+    // Trim leading and trailing whitespace from the text
+    const trimmedText = form.text.trim();
+  
+    if (trimmedText.length > 0 || form.file) {
       const { group = null, profile = null } = chatRoom.data;
-
+  
       if (
         (isGroup && group.participantsId.includes(master._id)) ||
         (!isGroup && profile.active)
       ) {
+        // Only emit message if it's not empty or just whitespace
         socket.emit('chat/insert', {
           ...form,
+          text: trimmedText, // Send trimmed text
           ownersId: chatRoom.data.ownersId,
           roomType: chatRoom.data.roomType,
           userId: master._id,
           roomId: chatRoom.data.roomId,
         });
       } else return;
-
+  
       // close emoji board after 150ms
       setTimeout(() => setEmojiBoard(false), 150);
       // reset form
       setForm({ text: '', file: null });
     }
   };
+  
 
   useEffect(() => {
     socket.on('chat/insert', (payload) => {
@@ -159,19 +165,21 @@ function Send({ setChats, setNewMessage, control }) {
             }
           }}
         />
-        <button
-          type="submit"
-          className="p-2 rounded-full hover:bg-spill-100 dark:hover:bg-spill-800"
-          onClick={(e) => {
-            if (form.text.length > 0) {
-              handleSubmit(e);
-            }
-          }}
-        >
-          <i>
-            <bi.BiSend />
-          </i>
-        </button>
+<button
+  type="submit"
+  className="p-2 rounded-full hover:bg-spill-100 dark:hover:bg-spill-800"
+  disabled={!form.text.trim()} // Disable button if form.text is empty or contains only whitespace
+  onClick={(e) => {
+    if (form.text.trim().length > 0) {
+      handleSubmit(e);
+    }
+  }}
+>
+  <i>
+    {form.text.trim() ? <bi.BiSend /> : <bi.BiMicrophone />}
+  </i>
+</button>
+
       </div>
       {emojiBoard && <EmojiBoard setForm={setForm} />}
     </div>
